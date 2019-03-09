@@ -1,0 +1,33 @@
+.navbar .navbar-nav .navbar-item {
+    color: #000;
+    text-decoration: none;
+    padding: 0 20px;
+}
+.navbar .navbar-nav .navbar-item:hover {
+    color: #007bff;
+}
+.navbar .navbar-nav .navbar-item.active {
+    color: #007bff;
+}
+
+.group:nth-of-type(2n) {
+    margin-left: auto;
+}
+
+.group .single-country {
+    padding: 5px 0;
+    align-items: center;
+}
+
+.group .single-country .country-flag {
+    padding: 0 20px;
+}
+
+.group .single-country p {
+    margin: 0;
+    line-height: 1;
+}
+
+.group .group-labels p {
+    font-weight: bold;
+}
