@@ -26,23 +26,6 @@ let ShowMatches = {
         let request = Utilities.parseRequestURL();
         let match = await Fetcher(url + request.id)
             .then(data => data.find(singleMatch => singleMatch.fifa_id === request.optionalId));
-        console.log(match);
-        // const teamSortingOrder = ['Goalie', 'Defender', 'Midfield', 'Forward'];
-        //
-        // let homeTeamStartingEleven = match.home_team_statistics.starting_eleven
-        //     .sort((playerA, playerB) => {
-        //         return teamSortingOrder.indexOf(playerA.position) - teamSortingOrder.indexOf(playerB.position);
-        //     });
-        //
-        // let awayTeamStartingEleven = match.away_team_statistics.starting_eleven
-        //     .sort((playerA, playerB) => {
-        //         return teamSortingOrder.indexOf(playerA.position) - teamSortingOrder.indexOf(playerB.position);
-        //     });
-        //
-        //
-        // console.log(homeTeamStartingEleven);
-        // console.log(match);
-
         let view =
             `<section class="section">
                 <div class="row">
@@ -56,19 +39,31 @@ let ShowMatches = {
                     </div>
                     <div class="statistics col-8 m-auto">
                     <h2 class="text-center mb-3">Match statistics</h2>
-                    <div class="row">
+                    <div class="row border">
                         <div class="col-4">${match.home_team.goals}</div><div class="col-4 text-center font-weight-bold">Goals</div><div class="col-4 text-right">${match.away_team.goals}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.on_target}</div><div class="col-4 text-center font-weight-bold">Shots on target</div><div class="col-4 text-right">${match.away_team_statistics.on_target}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.off_target}</div><div class="col-4 text-center font-weight-bold">Shots off target</div><div class="col-4 text-right">${match.away_team_statistics.off_target}</div>
                     </div>
-                    <div class="row">
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.ball_possession}</div><div class="col-4 text-center font-weight-bold">Possession (%)</div><div class="col-4 text-right">${match.away_team_statistics.ball_possession}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.corners}</div><div class="col-4 text-center font-weight-bold">Corners</div><div class="col-4 text-right">${match.away_team_statistics.corners}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.offsides}</div><div class="col-4 text-center font-weight-bold">Offsides</div><div class="col-4 text-right">${match.away_team_statistics.offsides}</div>
                     </div>
-                    <div class="row">
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.fouls_committed}</div><div class="col-4 text-center font-weight-bold">Fouls</div><div class="col-4 text-right">${match.away_team_statistics.fouls_committed}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.yellow_cards}</div><div class="col-4 text-center font-weight-bold">Yellow cards</div><div class="col-4 text-right">${match.away_team_statistics.yellow_cards}</div>
+                    </div>
+                    <div class="row border">
                         <div class="col-4">${match.home_team_statistics.red_cards}</div><div class="col-4 text-center font-weight-bold">Red cards</div><div class="col-4 text-right">${match.away_team_statistics.red_cards}</div>
                     </div>
                     </div>
@@ -125,12 +120,12 @@ let ShowMatches = {
                     </div>
                     <div class="events col-6">
                     <ul class="events-list">
-                        ${match.home_team_events.map(event => `<li><span class="font-weight-bold">(${event.time}) ${event.type_of_event}: </span><span class="font-italic">${event.player}</span></li>`).join('')}
+                        ${match.home_team_events.map(event => `<li class="border"><span class="font-weight-bold">(${event.time}) ${event.type_of_event}: </span><span class="font-italic">${event.player}</span></li>`).join('')}
                     </ul>
                     </div>
                     <div class="events col-6">
                         <ul class="events-list">
-                            ${match.away_team_events.map(event => `<li><span class="font-weight-bold">(${event.time}) ${event.type_of_event}: </span><span class="font-italic">${event.player}</span></li>`).join('')}
+                            ${match.away_team_events.map(event => `<li class="border"><span class="font-weight-bold">(${event.time}) ${event.type_of_event}: </span><span class="font-italic">${event.player}</span></li>`).join('')}
                         </ul>
                     </div>
                     </div>
