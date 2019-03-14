@@ -17,12 +17,6 @@ let Header = {
                             <a class="navbar-item ${window.location.hash === '' || window.location.hash === '#/' ? 'active' : ''}" href="#/">
                                 Home
                             </a>
-                            <a class="navbar-item ${window.location.hash === '#/about' ? 'active' : ''}" href="#/about">
-                                Groups
-                            </a>
-                            <a class="navbar-item ${window.location.hash === '#/secret' ? 'active' : ''}" href="#/secret">
-                                Teams
-                            </a>
                         </div>
                     </div>
                 </div>

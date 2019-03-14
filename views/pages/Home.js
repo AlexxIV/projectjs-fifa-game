@@ -1,28 +1,13 @@
-let getBasicInfo = async () => {
-    const options = {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'applicaiton/json'
-        }
-    };
+import Fetcher from '../../services/Fetcher.js';
 
-    try {
-        const response = await fetch('https://worldcup.sfg.io/teams/group_results', options);
-        const json = await response.json();
-
-        return json
-    } catch (err) {
-        console.log('Error getting data', err)
-    }
-};
+const url = `http://worldcup.sfg.io/teams/group_results`;
 
 let Home = {
     render: async () => {
-        let groups = await getBasicInfo();
+        let groups = await Fetcher(url);
 
         let view =
             `<section class="section">
-                <h1> Home </h1>
                 <div class="row">
                     ${groups.map(singleGroup => 
                         `<div class="col-5 group">
@@ -39,7 +24,7 @@ let Home = {
                             ${singleGroup.ordered_teams.map(singleTeam => 
                                 `<div class="row single-country">
                                     <div class="col-2 country-flag"><img width="50" height="40" src="assets/${singleTeam.fifa_code.toLowerCase()}.png"></div>
-                                    <div class="col-3"><a href="#/team/${singleTeam.id}">${singleTeam.country}</a></div>
+                                    <div class="col-3"><a href="#/team/${singleTeam.fifa_code}">${singleTeam.country}</a></div>
                                     <div class="col-1 ml-auto"><p>${singleTeam.games_played}</p></div>
                                     <div class="col-1"><p>${singleTeam.wins}</p></div>
                                     <div class="col-1"><p>${singleTeam.losses}</p></div>
