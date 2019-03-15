@@ -1,10 +1,13 @@
-import Utilities from '../../services/Utilities.js';
 import Fetcher from '../../services/Fetcher.js';
 
 const url = `http://worldcup.sfg.io/teams`;
-let request = Utilities.parseRequestURL();
+
 
 function getObject(theObject) {
+    // Hacks all day
+    let hash = window.location.hash;
+    let needle = hash.split('/')[2];
+
     var result = null;
     if(theObject instanceof Array) {
         for(var i = 0; i < theObject.length; i++) {
@@ -17,8 +20,8 @@ function getObject(theObject) {
     else
     {
         for(var prop in theObject) {
-            if(prop.toLowerCase().includes(request.id) || (typeof theObject[prop] === 'string' && theObject[prop].toLowerCase().includes(request.id))) {
-                    return theObject;
+            if(prop.toLowerCase().includes(needle) || (typeof theObject[prop] === 'string' && theObject[prop].toLowerCase().includes(needle))) {
+                return theObject;
             }
             if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
                 result = getObject(theObject[prop]);
@@ -46,13 +49,6 @@ let SearchResults = {
     },
 
     after_render: async () => {
-        // let search = document.getElementById('search');
-        // let input = document.getElementById('search-input');
-        //
-        // search.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     window.location = `${search.href}/${input.value}`;
-        // })
     }
 };
 

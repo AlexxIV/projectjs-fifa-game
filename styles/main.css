@@ -256,7 +256,8 @@
     transition: width 0.4s linear;
 }
 
-.searchbar:hover > .search_input{
+.searchbar:hover > .search_input,
+.search_input:focus {
     padding: 0 10px;
     width: 450px;
     caret-color:red;
